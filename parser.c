@@ -6,13 +6,13 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 13:18:18 by msimoes           #+#    #+#             */
-/*   Updated: 2025/09/05 13:43:16 by msimoes          ###   ########.fr       */
+/*   Updated: 2026/01/26 14:51:45 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	parser (char **args, t_philo *philo, int flag)
+int	parser(char **args, t_initvals *initvals, int flag)
 {
 	int	i;
 
@@ -22,15 +22,18 @@ void	parser (char **args, t_philo *philo, int flag)
 		if (ft_isdigit(args[i]) == 0 || is_positive(ft_atol(args[i])) == 0)
 		{
 			write(2, "Error: Invalid argument\n", 24);
-			exit(EXIT_FAILURE);
+			return (1);
 		}
 		i++;
 	}
-	philo->nbr = ft_atol(args[1]);
-	philo->forks = ft_atol(args[1]);
-	philo->time_die = ft_atol(args[2]);
-	philo->time_eat = ft_atol(args[3]);
-	philo->time_sleep = ft_atol(args[4]);
+	initvals->nbr = ft_atol(args[1]);
+	initvals->forks = ft_atol(args[1]);
+	initvals->time_die = ft_atol(args[2]);
+	initvals->time_eat = ft_atol(args[3]);
+	initvals->time_sleep = ft_atol(args[4]);
 	if (flag == 1)
-		philo->repeats = ft_atol(args[5]);
+		initvals->repeats = ft_atol(args[5]);
+	else
+		initvals->repeats = -1;
+	return (0);
 }

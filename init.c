@@ -1,25 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   srcs.h                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/05 10:30:17 by msimoes           #+#    #+#             */
-/*   Updated: 2026/01/26 14:48:59 by msimoes          ###   ########.fr       */
+/*   Created: 2026/01/26 15:25:50 by msimoes           #+#    #+#             */
+/*   Updated: 2026/01/26 15:26:02 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SRCS_H
-# define SRCS_H
+#include "philo.h"
 
-#include <stddef.h>
-#include <sys/time.h>
-
-long	ft_atol(const char *str);
-long	ft_get_time(void);
-int		ft_isdigit(char *c);
-int		is_positive(long nbr);
-
-
-#endif

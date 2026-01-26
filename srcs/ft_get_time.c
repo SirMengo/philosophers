@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   srcs.h                                             :+:      :+:    :+:   */
+/*   ft_get_time.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/05 10:30:17 by msimoes           #+#    #+#             */
-/*   Updated: 2026/01/26 14:48:59 by msimoes          ###   ########.fr       */
+/*   Created: 2026/01/26 14:46:03 by msimoes           #+#    #+#             */
+/*   Updated: 2026/01/26 14:46:47 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SRCS_H
-# define SRCS_H
+#include "srcs.h"
 
-#include <stddef.h>
-#include <sys/time.h>
+long	ft_get_time(void)
+{
+	struct timeval	tv;
 
-long	ft_atol(const char *str);
-long	ft_get_time(void);
-int		ft_isdigit(char *c);
-int		is_positive(long nbr);
-
-
-#endif
+	if (gettimeofday(&tv, NULL) == -1)
+		return (-1);
+	return (tv.tv_sec * 1000L + tv.tv_usec / 1000L);
+}
