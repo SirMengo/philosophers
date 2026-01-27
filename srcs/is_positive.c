@@ -6,13 +6,13 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 13:16:22 by msimoes           #+#    #+#             */
-/*   Updated: 2025/09/05 13:17:23 by msimoes          ###   ########.fr       */
+/*   Updated: 2026/01/27 13:54:58 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "srcs.h"
 
-int is_positive (long nbr)
+int is_positive(long nbr)
 {
 	if (nbr < 0)
 		return (0);
