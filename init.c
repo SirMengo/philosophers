@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 15:25:50 by msimoes           #+#    #+#             */
-/*   Updated: 2026/01/28 14:03:20 by msimoes          ###   ########.fr       */
+/*   Updated: 2026/01/28 17:04:18 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static t_philo	*init_table(t_data *data)
 {
 	int		id;
 	t_philo	*table;
-	
+
 	table = ft_calloc(data->initvals.nbr, sizeof(t_philo));
 	if (!table)
 		return (NULL);
@@ -79,7 +79,7 @@ static int	init_mutex(t_data *data)
 	{
 		if (pthread_mutex_init(&data->mutex.fork[i], NULL) != 0)
 		{
-			while(--i >= 0)
+			while (--i >= 0)
 				pthread_mutex_destroy(&data->mutex.fork[i]);
 			return (1);
 		}
@@ -93,7 +93,7 @@ static int	init_mutex(t_data *data)
 
 int	init_all(t_data *data, char **args)
 {
-	t_initvals initvals;
+	t_initvals	initvals;
 
 	if (parser(args, &initvals))
 		return (1);
@@ -101,8 +101,8 @@ int	init_all(t_data *data, char **args)
 	{
 		printf("0 1 has taken a fork\n");
 		usleep(ft_atol(args[2]) * 1000);
-		printf("%ld 1 died\n",ft_atol(args[2]));
-		return (0);
+		printf("%ld 1 died\n", ft_atol(args[2]));
+		return (1);
 	}
 	data->initvals = initvals;
 	init_mutex(data);

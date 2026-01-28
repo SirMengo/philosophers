@@ -6,18 +6,17 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 15:36:44 by msimoes           #+#    #+#             */
-/*   Updated: 2026/01/28 16:05:25 by msimoes          ###   ########.fr       */
+/*   Updated: 2026/01/28 17:09:42 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-
 int	check_eat_limit(t_philo *philo)
 {
-	int	id;
+	int		id;
 	t_data	*data;
-	
+
 	id = 0;
 	data = philo->data;
 	if (data->initvals.repeats == -1)
@@ -53,8 +52,8 @@ int	ft_death(t_data *data)
 
 int	time_of_death(t_philo *philo)
 {
-	int	id;
-	t_data *data;
+	int		id;
+	t_data	*data;
 
 	id = 0;
 	data = philo->data;
@@ -92,7 +91,6 @@ void	ft_sleep(t_data *data, int time)
 {
 	long	start_sleep;
 	long	elapsed;
-	(void)data;
 
 	start_sleep = ft_get_time();
 	while (1)
@@ -101,7 +99,7 @@ void	ft_sleep(t_data *data, int time)
 			break ;
 		elapsed = ft_get_time() - start_sleep;
 		if (elapsed >= time)
-			break;
+			break ;
 		usleep(1000);
 	}
 }

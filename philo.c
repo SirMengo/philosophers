@@ -6,18 +6,37 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 09:03:51 by msimoes           #+#    #+#             */
-/*   Updated: 2026/01/28 16:00:49 by msimoes          ###   ########.fr       */
+/*   Updated: 2026/01/28 17:01:10 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	philo_manager(t_philo *philo)
+void	clean_all(t_data *data)
 {
 	int	id;
 
 	id = 0;
-	while(id < philo->data->initvals.nbr)
+	while (id < data->initvals.nbr)
+	{
+		pthread_join(data->philo[id].thread, NULL);
+		pthread_mutex_destroy(&data->mutex.fork[id]);
+		id++;
+	}
+	pthread_mutex_destroy(&data->mutex.write_flag);
+	pthread_mutex_destroy(&data->mutex.dead_flag);
+	pthread_mutex_destroy(&data->mutex.eat_flag);
+	free(data->philo);
+	free(data->mutex.fork);
+}
+
+void	philo_manager(t_philo *philo)
+{
+	int	id;
+	int	num;
+
+	id = 0;
+	while (id < philo->data->initvals.nbr)
 	{
 		pthread_create(&philo[id].thread, NULL, &routine, &philo[id]);
 		id++;
@@ -29,17 +48,20 @@ void	philo_manager(t_philo *philo)
 		if (time_of_death(philo))
 			break ;
 	}
-	id = 0;
-	while(id < philo->data->initvals.nbr)
+	num = philo->data->id_dead;
+	if (philo->data->id_dead > 0)
 	{
-		pthread_join(philo[id].thread, NULL);
-		id++;
+		pthread_mutex_lock(&philo->data->mutex.write_flag);
+		printf("%ld %i died\n",
+			ft_get_time() - philo[num - 1].data->start_time, num);
+		pthread_mutex_unlock(&philo->data->mutex.write_flag);
 	}
+	clean_all(philo->data);
 }
 
 int	main(int ac, char **av)
 {
-	static t_data data;
+	static t_data	data;
 
 	if (ac >= 5 && ac <= 6)
 	{
