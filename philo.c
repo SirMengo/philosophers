@@ -6,13 +6,13 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 09:03:51 by msimoes           #+#    #+#             */
-/*   Updated: 2026/01/27 15:47:57 by msimoes          ###   ########.fr       */
+/*   Updated: 2026/01/28 13:55:52 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-void	start_philo(t_philo *philo)
+void	philo_manager(t_philo *philo)
 {
 	int	id;
 
@@ -21,6 +21,10 @@ void	start_philo(t_philo *philo)
 	{
 		pthread_create(&philo[id].thread, NULL, &routine, &philo[id]);
 		id++;
+	}
+	while(1)
+	{
+		if ()
 	}
 	id = 0;
 	while(id < philo->data->initvals.nbr)
@@ -38,7 +42,7 @@ int	main(int ac, char **av)
 	{
 		if (init_all(&data, av))
 			return (1);
-		start_philo(data.philo);
+		philo_manager(data.philo);
 	}
 	else
 	{

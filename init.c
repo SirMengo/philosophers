@@ -6,13 +6,13 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 15:25:50 by msimoes           #+#    #+#             */
-/*   Updated: 2026/01/27 15:26:31 by msimoes          ###   ########.fr       */
+/*   Updated: 2026/01/28 14:03:20 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	parser(char **args, t_initvals *initvals)
+static int	parser(char **args, t_initvals *initvals)
 {
 	int	i;
 
@@ -37,7 +37,7 @@ int	parser(char **args, t_initvals *initvals)
 	return (0);
 }
 
-void	init_philo(t_philo *table, int id, t_data *data)
+static void	init_philo(t_philo *table, int id, t_data *data)
 {
 	table->data = data;
 	table->id = id + 1;
@@ -48,7 +48,7 @@ void	init_philo(t_philo *table, int id, t_data *data)
 	table->fork_right = &data->mutex.fork[(id + 1) % data->initvals.nbr];
 }
 
-t_philo	*init_table(t_data *data)
+static t_philo	*init_table(t_data *data)
 {
 	int		id;
 	t_philo	*table;
@@ -67,7 +67,7 @@ t_philo	*init_table(t_data *data)
 	return (table);
 }
 
-int	init_mutex(t_data *data)
+static int	init_mutex(t_data *data)
 {
 	int	i;
 
@@ -105,6 +105,7 @@ int	init_all(t_data *data, char **args)
 		return (0);
 	}
 	data->initvals = initvals;
+	init_mutex(data);
 	data->check = 0;
 	data->dead = 0;
 	data->id_dead = 0;
