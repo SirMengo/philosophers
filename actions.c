@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 15:04:56 by msimoes           #+#    #+#             */
-/*   Updated: 2026/01/28 14:01:42 by msimoes          ###   ########.fr       */
+/*   Updated: 2026/01/28 16:04:29 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	*routine(void *arg)
 	data = philo->data;
 	if ((philo->id % 2) == 0)
 		ft_sleep(data, 10);
-	while (1)
+	while (ft_death(data) == 0)
 	{
 		action_eat(philo);
 		action_sleep(philo);

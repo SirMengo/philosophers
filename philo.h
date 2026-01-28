@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 09:04:19 by msimoes           #+#    #+#             */
-/*   Updated: 2026/01/27 15:49:01 by msimoes          ###   ########.fr       */
+/*   Updated: 2026/01/28 16:01:18 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,9 @@ int	init_all(t_data *data, char **args);
 //aux.c
 void	mutex_print(char *str, t_philo *philo);
 void	ft_sleep(t_data *data, int time);
+int		check_eat_limit(t_philo *philo);
+int		time_of_death(t_philo *philo);
+int		ft_death(t_data *data);
+
 
 #endif
