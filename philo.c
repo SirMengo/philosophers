@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 09:03:51 by msimoes           #+#    #+#             */
-/*   Updated: 2026/01/28 13:55:52 by msimoes          ###   ########.fr       */
+/*   Updated: 2026/01/28 14:04:49 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@ void	philo_manager(t_philo *philo)
 	{
 		pthread_create(&philo[id].thread, NULL, &routine, &philo[id]);
 		id++;
-	}
-	while(1)
-	{
-		if ()
 	}
 	id = 0;
 	while(id < philo->data->initvals.nbr)
