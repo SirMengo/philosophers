@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 15:36:44 by msimoes           #+#    #+#             */
-/*   Updated: 2026/01/28 17:09:42 by msimoes          ###   ########.fr       */
+/*   Updated: 2026/02/10 17:54:00 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,16 +90,12 @@ void	mutex_print(char *str, t_philo *philo)
 void	ft_sleep(t_data *data, int time)
 {
 	long	start_sleep;
-	long	elapsed;
 
 	start_sleep = ft_get_time();
-	while (1)
+	while (ft_get_time() - start_sleep < time)
 	{
 		if (ft_death(data))
 			break ;
-		elapsed = ft_get_time() - start_sleep;
-		if (elapsed >= time)
-			break ;
-		usleep(1000);
+		usleep(500);
 	}
 }
