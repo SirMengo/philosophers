@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 15:25:50 by msimoes           #+#    #+#             */
-/*   Updated: 2026/01/28 17:04:18 by msimoes          ###   ########.fr       */
+/*   Updated: 2026/02/10 15:06:56 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,11 @@ static int	parser(char **args, t_initvals *initvals)
 	initvals->time_eat = ft_atol(args[3]);
 	initvals->time_sleep = ft_atol(args[4]);
 	if (args[5])
+	{
 		initvals->repeats = ft_atol(args[5]);
+		if (initvals->repeats == 0)
+			return (1);
+	}
 	else
 		initvals->repeats = -1;
 	return (0);

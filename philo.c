@@ -6,7 +6,7 @@
 /*   By: msimoes <msimoes@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 09:03:51 by msimoes           #+#    #+#             */
-/*   Updated: 2026/01/28 17:01:10 by msimoes          ###   ########.fr       */
+/*   Updated: 2026/02/10 14:58:47 by msimoes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,18 @@ void	clean_all(t_data *data)
 	free(data->mutex.fork);
 }
 
+void	monitor(t_philo *philo)
+{
+	while (1)
+	{
+		if (check_eat_limit(philo))
+			break ;
+		if (time_of_death(philo))
+			break ;
+		usleep(100);
+	}
+}
+
 void	philo_manager(t_philo *philo)
 {
 	int	id;
@@ -41,13 +53,7 @@ void	philo_manager(t_philo *philo)
 		pthread_create(&philo[id].thread, NULL, &routine, &philo[id]);
 		id++;
 	}
-	while (1)
-	{
-		if (check_eat_limit(philo))
-			break ;
-		if (time_of_death(philo))
-			break ;
-	}
+	monitor(philo);
 	num = philo->data->id_dead;
 	if (philo->data->id_dead > 0)
 	{
